@@ -2,6 +2,7 @@ const { Client, Intents, Collection } = require("discord.js");
 const botconfig = require("./botconfig.json");
 const token = botconfig.TOKEN; // Discord Bot Token
 const { initializeCommands } = require("./deploy");
+const mongoose = require("mongoose");
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_PRESENCES],
@@ -29,6 +30,7 @@ client.on("interactionCreate", async (interaction) => {
 
 client.on("ready", async () => {
   await initializeCommands(client);
+  client.mongo = await mongoose.connect(process.env.MONGO_URI || botconfig.MONGO_URI, { keepAlive: true });
 
   client.user.setActivity("subreddits", {
     type: "WATCHING",

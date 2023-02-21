@@ -16,7 +16,8 @@ client.on("interactionCreate", async (interaction) => {
   if (command.permission) {
     const user = interaction.member;
     const userPerms = interaction.channel.permissionsFor(user);
-    if (!userPerms || !userPerms.has(command.permission)) return interaction.reply("You do not have the permissions to use this command :(");
+    if (!userPerms || !userPerms.has(command.permission))
+      return interaction.reply("You do not have the permissions to use this command :(");
   }
 
   try {
@@ -29,7 +30,7 @@ client.on("interactionCreate", async (interaction) => {
 client.on("ready", async () => {
   await initializeCommands(client);
 
-  client.user.setActivity("the world burn", {
+  client.user.setActivity("subreddits", {
     type: "WATCHING",
   });
 

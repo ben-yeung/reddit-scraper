@@ -35,7 +35,7 @@ module.exports = {
         .setTitle(`Active Commands | Page ${i + 1}`)
         .addField("Active Commands: ", pages[i].join("\n\n"))
         .setFooter({
-          text: "Created with ❤️ by ben#0673 | Buttons stop working after 1 minute.",
+          text: "Created with ❤️ by ben.#0673 | Buttons stop working after 1 minute.",
         });
 
       embeds.push(embed);
